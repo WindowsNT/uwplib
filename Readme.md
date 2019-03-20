@@ -9,10 +9,8 @@ It's a DLL that allows you to use an UWP control as a HWND.
 1. Create an app with the attached manifest 
 2. Call winrt::init_apartment(apartment_type::single_threaded); 
 3. Call WindowsXamlManager::InitializeForCurrentThread();
-4. Load the DLL with LoadLibrary
-5. Call exported function Register()
-6. Include uwplib.h
-7. Create UWP windows using the class names below and a UNIQUE title.
+4. Call Register()
+5. Create UWP windows using the class names below and a UNIQUE title.
 
 All Controls send WM_NOTIFY notifications, with a structure passed:
 
