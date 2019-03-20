@@ -1,0 +1,3 @@
+[submodule "mt"]
+	path = mt
+	url = https://github.com/WindowsNT/mt
