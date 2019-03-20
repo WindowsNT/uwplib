@@ -64,7 +64,7 @@ namespace UWPLIB
 #include ".\\mt\\rw.hpp"
 	tlock<map<wstring, UWPCONTROL*>> controls;
 
-	void GenericDestroy(HWND hh)
+	inline void GenericDestroy(HWND hh)
 	{
 		UWPCONTROL* s = (UWPCONTROL*)GetProp(hh, L"s");
 		if (s)
@@ -99,7 +99,7 @@ namespace UWPLIB
 
 	}
 
-	bool GetControlByName(const wchar_t* n, UWPCONTROL** ptr)
+	inline bool GetControlByName(const wchar_t* n, UWPCONTROL** ptr)
 	{
 		if (!n || !ptr)
 			return false;
@@ -116,7 +116,7 @@ namespace UWPLIB
 
 
 
-	UWPCONTROL* GenericCreate(HWND hP, HWND hh, LPVOID cs)
+	inline UWPCONTROL* GenericCreate(HWND hP, HWND hh, LPVOID cs)
 	{
 		auto s = new UWPCONTROL;
 		SetProp(hh, L"s", (HANDLE)s);
@@ -330,7 +330,7 @@ Name="GridTop_%s"
 		return s;
 	}
 
-	ATOM Register_Custom()
+	inline ATOM Register_Custom()
 	{
 		auto WndProc = [](HWND hh, UINT mm, WPARAM ww, LPARAM ll) -> LRESULT
 		{
@@ -372,7 +372,7 @@ Name="GridTop_%s"
 		return RegisterClassExW(&wC);
 	}
 
-	ATOM Register_Rating()
+	inline ATOM Register_Rating()
 	{
 		auto WndProc = [](HWND hh, UINT mm, WPARAM ww, LPARAM ll) -> LRESULT
 		{
@@ -427,7 +427,7 @@ Name="GridTop_%s"
 		return RegisterClassExW(&wC);
 	}
 
-	ATOM Register_ProgressRing()
+	inline ATOM Register_ProgressRing()
 	{
 		auto WndProc = [](HWND hh, UINT mm, WPARAM ww, LPARAM ll) -> LRESULT
 		{
@@ -473,7 +473,7 @@ Name="GridTop_%s"
 	}
 
 
-	ATOM Register_HyperlinkButton()
+	inline ATOM Register_HyperlinkButton()
 	{
 		auto WndProc = [](HWND hh, UINT mm, WPARAM ww, LPARAM ll) -> LRESULT
 		{
@@ -522,7 +522,7 @@ Name="GridTop_%s"
 		return RegisterClassExW(&wC);
 	}
 
-	ATOM Register_InkCanvas()
+	inline ATOM Register_InkCanvas()
 	{
 		auto WndProc = [](HWND hh, UINT mm, WPARAM ww, LPARAM ll) -> LRESULT
 		{
@@ -576,7 +576,7 @@ Name="GridTop_%s"
 
 
 
-	ATOM Register_Colorpicker()
+	inline ATOM Register_Colorpicker()
 	{
 		auto WndProc = [](HWND hh, UINT mm, WPARAM ww, LPARAM ll) -> LRESULT
 		{
@@ -622,7 +622,7 @@ Name="GridTop_%s"
 
 
 
-	ATOM Register_Timepicker()
+	inline ATOM Register_Timepicker()
 	{
 		auto WndProc = [](HWND hh, UINT mm, WPARAM ww, LPARAM ll) -> LRESULT
 		{
@@ -683,7 +683,7 @@ Name="GridTop_%s"
 	}
 
 
-	ATOM Register_ToggleSwitch()
+	inline ATOM Register_ToggleSwitch()
 	{
 		auto WndProc = [](HWND hh, UINT mm, WPARAM ww, LPARAM ll) -> LRESULT
 		{
@@ -738,7 +738,7 @@ Name="GridTop_%s"
 	}
 
 
-	ATOM Register_CheckBox()
+	inline ATOM Register_CheckBox()
 	{
 		auto WndProc = [](HWND hh, UINT mm, WPARAM ww, LPARAM ll) -> LRESULT
 		{
@@ -812,7 +812,7 @@ Name="GridTop_%s"
 
 
 
-	ATOM Register_CalendarDatePicker()
+	inline ATOM Register_CalendarDatePicker()
 	{
 		auto WndProc = [](HWND hh, UINT mm, WPARAM ww, LPARAM ll) -> LRESULT
 		{
@@ -878,7 +878,7 @@ Name="GridTop_%s"
 		return RegisterClassExW(&wC);
 	}
 
-	ATOM Register_ProgressBar()
+	inline ATOM Register_ProgressBar()
 	{
 		auto WndProc = [](HWND hh, UINT mm, WPARAM ww, LPARAM ll) -> LRESULT
 		{
@@ -938,7 +938,7 @@ Name="GridTop_%s"
 	}
 
 
-	ATOM Register_CalendarView()
+	inline ATOM Register_CalendarView()
 	{
 		auto WndProc = [](HWND hh, UINT mm, WPARAM ww, LPARAM ll) -> LRESULT
 		{
@@ -1029,7 +1029,7 @@ Name="GridTop_%s"
 	}
 
 
-	ATOM Register_Image()
+	inline ATOM Register_Image()
 	{
 		auto WndProc = [](HWND hh, UINT mm, WPARAM ww, LPARAM ll) -> LRESULT
 		{
@@ -1078,7 +1078,7 @@ Name="GridTop_%s"
 		return RegisterClassExW(&wC);
 	}
 
-	void Register()
+	inline void Register()
 	{
 		Register_Custom();
 		Register_Rating();
