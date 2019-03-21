@@ -62,7 +62,7 @@ namespace UWPLIB
 	// ---
 
 #include ".\\mt\\rw.hpp"
-	tlock<map<wstring, UWPCONTROL*>> controls;
+	inline tlock<map<wstring, UWPCONTROL*>> controls;
 
 	inline void GenericDestroy(HWND hh)
 	{
@@ -163,7 +163,8 @@ namespace UWPLIB
 					LR"(
     <ProgressRing xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-			Name="%s"  />
+			Name="%s"  
+/>
 )", wn);
 				strx = tstr.data();
 			}
@@ -438,6 +439,8 @@ Name="GridTop_%s"
 			{
 				return (LRESULT)s;
 			}
+			case WM_ERASEBKGND:
+				return 1;
 			case UWPM_PROGRESSRING_ACTIVATE:
 			{
 				// ww 0 no, 1 yes
@@ -1047,7 +1050,6 @@ Name="GridTop_%s"
 			}
 			case UWPM_IMAGE_SETSOURCE:
 			{
-
 				/*				auto ctrl = s->ins.as<Image>();
 								auto h = (wchar_t*)ll;
 								winrt::Windows::UI::Xaml::Media::Imaging::BitmapImage bi;

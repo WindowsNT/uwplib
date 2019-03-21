@@ -9,6 +9,9 @@ INT_PTR CALLBACK DP(HWND hh, UINT mm, WPARAM, LPARAM ll)
 {
 	switch (mm)
 	{
+	case WM_CTLCOLORDLG:
+		return (INT_PTR)GetStockObject(WHITE_BRUSH);
+
 	case WM_NOTIFY:
 	{
 		NMHDR* n = (NMHDR*)ll;
@@ -163,7 +166,6 @@ INT_PTR CALLBACK DP(HWND hh, UINT mm, WPARAM, LPARAM ll)
 			SetWindowText(MainWindow, L"Pivot Changed");
 			return 1;
 		});
-
 
 		break;
 	}
