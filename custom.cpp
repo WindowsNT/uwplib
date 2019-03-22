@@ -33,6 +33,19 @@ INT_PTR  CALLBACK D_DP(HWND hh, UINT mm, WPARAM ww, LPARAM ll)
 			break;
 		}
 
+		case WM_SIZE:
+		{
+			RECT rc;
+			GetClientRect(hh, &rc);
+			SetWindowPos(GetDlgItem(hh, 901), 0, 0, 0, rc.right, rc.bottom, SWP_SHOWWINDOW);
+
+			UWPLIB::UWPCONTROL* u = (UWPLIB::UWPCONTROL*)SendDlgItemMessage(hh, 901, UWPM_GET_CONTROL, 0, 0);
+			if (u)
+				SetWindowPos(u->hwndDetailXamlIsland, 0, 0, 0, rc.right, rc.bottom, SWP_SHOWWINDOW);
+
+			return 0;
+		}
+
 		case WM_COMMAND:
 		{
 			if (LOWORD(ww) == 101)
