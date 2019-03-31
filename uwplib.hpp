@@ -4,6 +4,7 @@ namespace UWPLIB
 	using namespace std;
 	using namespace winrt::Windows::UI::Xaml::Hosting;
 	using namespace winrt::Windows::Foundation::Collections;
+	using namespace winrt::Windows::UI::Xaml::Markup;
 
 #pragma pack(push,1)
 	struct UWPCONTROL
@@ -24,6 +25,8 @@ namespace UWPLIB
 
 #define UWPM_GET_CONTROL (WM_USER + 100)
 
+
+#ifndef UWPLIB_CUSTOMONLY
 
 #define UWPM_RATING_SET (WM_USER + 101)
 #define UWPM_RATING_GET (WM_USER + 102)
@@ -59,7 +62,7 @@ namespace UWPLIB
 #define UWPN_CHECKBOX_CHANGED (1)
 
 #define UWPM_PROGRESSBAR_SETPARAMS (WM_USER + 101)
-
+#endif
 
 	// ---
 
@@ -131,6 +134,7 @@ namespace UWPLIB
 		const wchar_t* strx = (const wchar_t*)cs;
 
 		vector<wchar_t> tstr(10000);
+#ifndef UWPLIB_CUSTOMONLY
 		if (!strx)
 		{
 			wchar_t cn[100] = { 0 };
@@ -289,6 +293,7 @@ Name="GridTop_%s"
 				strx = tstr.data();
 			}
 		}
+#endif
 
 		if (strx)
 			hr = interopDetail->AttachToWindow(hh);
@@ -375,6 +380,7 @@ Name="GridTop_%s"
 		return RegisterClassExW(&wC);
 	}
 
+#ifndef UWPLIB_CUSTOMONLY
 	inline ATOM Register_Rating()
 	{
 		auto WndProc = [](HWND hh, UINT mm, WPARAM ww, LPARAM ll) -> LRESULT
@@ -1081,10 +1087,11 @@ Name="GridTop_%s"
 		wC.lpszClassName = L"UWP_Image";
 		return RegisterClassExW(&wC);
 	}
-
+#endif
 	inline void Register()
 	{
 		Register_Custom();
+#ifndef UWPLIB_CUSTOMONLY
 		Register_Rating();
 		Register_ProgressRing();
 		Register_HyperlinkButton();
@@ -1097,6 +1104,7 @@ Name="GridTop_%s"
 		Register_CalendarDatePicker();
 		Register_CheckBox();
 		Register_ProgressBar();
+#endif
 	}
 
 }
