@@ -492,7 +492,7 @@ Name="GridTop_%s"
 			case WM_SETTEXT:
 			{
 				auto ctrl = s->ins.as<HyperlinkButton>();
-				ctrl.Content(box_value((wchar_t*)ll));
+				ctrl.Content(winrt::box_value((wchar_t*)ll));
 				return 0;
 			}
 			case WM_DESTROY:
@@ -558,7 +558,7 @@ Name="GridTop_%s"
 
 				auto c = c2.as<InkCanvas>();
 				auto pr = c.InkPresenter();
-				pr.InputDeviceTypes(Windows::UI::Core::CoreInputDeviceTypes::Mouse | Windows::UI::Core::CoreInputDeviceTypes::Pen | Windows::UI::Core::CoreInputDeviceTypes::Touch);
+				pr.InputDeviceTypes(winrt::Windows::UI::Core::CoreInputDeviceTypes::Mouse | winrt::Windows::UI::Core::CoreInputDeviceTypes::Pen | winrt::Windows::UI::Core::CoreInputDeviceTypes::Touch);
 
 
 				return 0;
@@ -757,7 +757,7 @@ Name="GridTop_%s"
 			case WM_SETTEXT:
 			{
 				auto ctrl = s->ins.as<CheckBox>();
-				ctrl.Content(box_value((wchar_t*)ll));
+				ctrl.Content(winrt::box_value((wchar_t*)ll));
 				return 0;
 			}
 			case UWPM_CHECKBOX_SET:

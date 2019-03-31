@@ -1,4 +1,29 @@
 #include "stdafx.h"
+
+
+#pragma comment(lib, "windowsapp")
+
+using namespace winrt;
+using namespace Windows::Foundation;
+using namespace Windows::Foundation::Collections;
+using namespace Windows::Foundation::Numerics;
+using namespace Windows::UI;
+using namespace Windows::UI::Composition;
+using namespace Windows::UI::Core;
+using namespace Windows::UI::Text;
+using namespace Windows::UI::Input::Inking;
+using namespace Windows::UI::Xaml;
+using namespace Windows::UI::Xaml::Data;
+using namespace Windows::UI::Xaml::Hosting;
+using namespace Windows::UI::Xaml::Controls;
+using namespace Windows::Media::Core;
+using namespace Windows::UI::Xaml::Markup;
+
+
+
+
+
+
 #include "uwplib.hpp"
 
 
