@@ -835,7 +835,7 @@ Name="GridTop_%s"
 				auto tpick = s->ins.as<CalendarDatePicker>();
 				auto dt = tpick.Date();
 				std::chrono::time_point tp = dt.GetDateTime();
-				FILETIME ft = clock::to_FILETIME(tp);
+				FILETIME ft = winrt::clock::to_FILETIME(tp);
 				return 0;
 			}
 			case UWPM_CALENDARPICK_SET:
@@ -844,7 +844,7 @@ Name="GridTop_%s"
 				// ll = FILETIME*
 				auto tpick = s->ins.as<CalendarDatePicker>();
 				FILETIME* ff = (FILETIME*)ll;
-				auto cr = clock::from_FILETIME(*ff);
+				auto cr = winrt::clock::from_FILETIME(*ff);
 				tpick.Date(cr);
 				break;
 			}
@@ -967,7 +967,7 @@ Name="GridTop_%s"
 				{
 					DateTime dt = vdt.GetAt(i);
 					std::chrono::time_point tp = dt;
-					FILETIME ft = clock::to_FILETIME(tp);
+					FILETIME ft = winrt::clock::to_FILETIME(tp);
 					tpv[i] = ft;
 				}
 				return sz;
@@ -982,7 +982,7 @@ Name="GridTop_%s"
 				FILETIME* ff = (FILETIME*)ll;
 				for (int i = 0; i < ww; i++)
 				{
-					auto cl = clock::from_FILETIME(ff[i]);
+					auto cl = winrt::clock::from_FILETIME(ff[i]);
 					vdt.Append(cl);
 				}
 				break;
