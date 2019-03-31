@@ -6,6 +6,8 @@ namespace UWPLIB
 	using namespace winrt::Windows::Foundation::Collections;
 	using namespace winrt::Windows::UI::Xaml::Markup;
 	using namespace winrt::Windows::Foundation;
+	using namespace winrt::Windows::UI;
+	using namespace winrt::Windows::UI::Xaml;
 
 #pragma pack(push,1)
 	struct UWPCONTROL
