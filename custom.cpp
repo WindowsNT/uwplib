@@ -21,7 +21,8 @@ wstring FromClip()
 	CloseClipboard();
 	return r;
 }
-
+#include ".\\xml\\xml3all.h"
+using namespace XML3;
 INT_PTR  CALLBACK D_DP(HWND hh, UINT mm, WPARAM ww, LPARAM ll)
 {
 	switch (mm)
@@ -55,7 +56,23 @@ INT_PTR  CALLBACK D_DP(HWND hh, UINT mm, WPARAM ww, LPARAM ll)
 				{
 					CloseClipboard();
 				}
-				SetWindowText(GetDlgItem(hh, 901), yy.c_str());
+
+				auto sz = yy.length() * 4 + 1000;
+				vector<char> d(sz);
+				WideCharToMultiByte(CP_UTF8, 0, yy.c_str(), yy.length(), d.data(), sz, 0, 0);
+
+				// Make sure the namespaces are there
+				XML3::XML x;
+				x.Parse(d.data(),strlen(d.data()));
+				x.GetRootElement().vv("xmlns") = "http://schemas.microsoft.com/winfx/2006/xaml/presentation";
+				x.GetRootElement().vv("xmlns:x") = "http://schemas.microsoft.com/winfx/2006/xaml";
+				auto sr = x.Serialize();
+
+				auto sz2 = sr.length() * 2 + 100;
+				vector<wchar_t> d2(sz2);
+				MultiByteToWideChar(CP_UTF8, 0, sr.c_str(), sr.length(), d2.data(), sz2);
+
+				SetWindowText(GetDlgItem(hh, 901), d2.data());
 			}
 			return 0;
 		}

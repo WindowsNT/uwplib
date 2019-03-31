@@ -2,6 +2,7 @@
 namespace UWPLIB
 {
 	using namespace std;
+	using namespace winrt::Windows::UI::Xaml::Hosting;
 
 #pragma pack(push,1)
 	struct UWPCONTROL

@@ -260,3 +260,9 @@ paket-files/
 __pycache__/
 *.pyc
 /custom.tlog
+/uwplib.tlog
+/resource.res
+/uwplib.exe.embed.manifest.res
+/uwplib.exe
+/uwplib_manifest.rc
+/vc141.idb
