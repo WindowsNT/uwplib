@@ -1,4 +1,5 @@
 #include "cstdafx.h"
+#include <functional>
 #include "uwplib.hpp"
 #pragma comment(lib,"Comctl32.lib")
 using namespace std;
