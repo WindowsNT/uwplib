@@ -11,8 +11,19 @@ It's a library that allows you to use an UWP control as a HWND.
 3. Call WindowsXamlManager::InitializeForCurrentThread();
 4. Call Register()
 5. Create windows with UWP_Custom class and use WM_SETTEXT to set the Xaml.
+6. The control returns an UWPCONTROL pointer which you can use to manipulate the IInspectable
 
 ```C++
+
+	struct UWPCONTROL
+	{
+		DesktopWindowXamlSource xs;
+		HWND hParent = 0;
+		HWND hwnd = 0;
+		HWND hwndDetailXamlIsland = 0;
+		winrt::Windows::Foundation::IInspectable ins;
+	};
+
  auto pv = LR"(<Pivot xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" >
     <PivotItem Header="Items">
