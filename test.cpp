@@ -86,6 +86,15 @@ LRESULT CALLBACK DP(HWND hh, UINT mm, WPARAM ww, LPARAM ll)
 		
 		<ToggleSwitch AutomationProperties.Name="simple ToggleSwitch" Margin="0,0,0,10"/>
 
+<StackPanel Orientation="Horizontal">
+    <AppBarButton Icon="AttachCamera" Label="Attach Camera"/>
+    <AppBarSeparator />
+    <AppBarButton Icon="Like" Label="Like"/>
+    <AppBarButton Icon="Dislike" Label="Dislike"/>
+    <AppBarSeparator />
+    <AppBarButton Icon="Orientation" Label="Orientation"/>
+</StackPanel>
+
 		</StackPanel>
     </PivotItem>
 
@@ -144,22 +153,125 @@ LRESULT CALLBACK DP(HWND hh, UINT mm, WPARAM ww, LPARAM ll)
 		</StackPanel>
     </PivotItem>
 
+    <PivotItem Header="Canvas">
+	<StackPanel Orientation="Vertical" Margin="20">
+		<InkToolbar x:Name="inkToolbar" />
+		<InkCanvas x:Name="inkCanvas"/>
+	</StackPanel>
+    </PivotItem>
+
+
+    <PivotItem Header="Menu">
+	<StackPanel Orientation="Vertical" Margin="20">
+		<AppBarButton Icon="Sort" IsCompact="True" ToolTipService.ToolTip="Sort" AutomationProperties.Name="Sort">
+		<AppBarButton.Flyout>
+			<MenuFlyout>
+				<MenuFlyoutItem Text="By rating" Click="MenuFlyoutItem_Click" Tag="rating"/>
+				<MenuFlyoutItem Text="By match" Click="MenuFlyoutItem_Click" Tag="match"/>
+				<MenuFlyoutItem Text="By distance" Click="MenuFlyoutItem_Click" Tag="distance"/>
+			</MenuFlyout>
+		</AppBarButton.Flyout>
+	</AppBarButton>
+
+
+	<MenuBar>
+		<MenuBarItem Title="File">
+			<MenuFlyoutItem Text="New"/>
+			<MenuFlyoutItem Text="Open..."/>
+			<MenuFlyoutItem Text="Save"/>
+			<MenuFlyoutItem Text="Exit"/>
+		</MenuBarItem>
+
+		<MenuBarItem Title="Edit">
+			<MenuFlyoutItem Text="Undo"/>
+			<MenuFlyoutItem Text="Cut"/>
+			<MenuFlyoutItem Text="Copy"/>
+			<MenuFlyoutItem Text="Paste"/>
+		</MenuBarItem>
+
+		<MenuBarItem Title="Help">
+			<MenuFlyoutItem Text="About"/>
+		</MenuBarItem>
+	</MenuBar>
+
+	</StackPanel>
+    </PivotItem>
+
+    <PivotItem Header="Layout">
+	<StackPanel Orientation="Vertical" Margin="20">
+
+		<FlipView MaxWidth="300" Height="70">
+				<Button Content="Button 1" />
+				<Button Content="Button 2" />
+				<Button Content="Button 3" />
+		</FlipView>
+
+		<GridView
+			x:Name="BasicGridView"
+			IsItemClickEnabled="True"
+			SelectionMode="Single">
+
+				<GridView.ItemsPanel>
+					<ItemsPanelTemplate>
+						<ItemsWrapGrid x:Name="MaxItemsWrapGrid" 
+									   MaximumRowsOrColumns="3" 
+									   Orientation="Horizontal"/>
+					</ItemsPanelTemplate>
+				</GridView.ItemsPanel>    
+
+				<Button Content="Button 1" />
+				<Button Content="Button 2" />
+				<Button Content="Button 3" />
+				<Button Content="Button 4" />
+				<Button Content="Button 5" />
+				<Button Content="Button 6" />
+				<Button Content="Button 7" />
+				<Button Content="Button 8" />
+				<Button Content="Button 9" />
+		</GridView>
+                    
+		<ListBox Width="200">
+			<x:String>Blue</x:String>
+			<x:String>Green</x:String>
+			<x:String>Red</x:String>
+			<x:String>Yellow</x:String>
+		</ListBox>
+
+		<ListView
+			x:Name="BaseExample"
+			BorderThickness="1"
+			Width="350" 
+			Height="400"
+			HorizontalAlignment="Left">
+				<Button Content="Button 1" />
+				<Button Content="Button 2" />
+				<Button Content="Button 3" />
+				<Button Content="Button 4" />
+
+		</ListView>
+
+		<TreeView SelectionMode="Multiple" >
+		</TreeView>
+
+
+	</StackPanel>
+    </PivotItem>
+
+    <PivotItem Header="Other">
+		<StackPanel Orientation="Vertical" Margin="20">
+			<PersonPicture  Margin="0,0,0,10" ProfilePicture="https://docs.microsoft.com/windows/uwp/contacts-and-calendar/images/shoulder-tap-static-payload.png" />
+
+			<ProgressBar  Margin="0,0,0,10" Width="130" IsIndeterminate="True" ShowPaused="False" ShowError="False" />
+
+			<ProgressRing  Margin="0,0,0,10" IsActive="True" />
+
+		</StackPanel>
+    </PivotItem>
+
+
+
 </Pivot>)");
 		UWPCONTROL* cust = (UWPCONTROL*)SendDlgItemMessage(hh, 910, UWPM_GET_CONTROL, 0, 0);
-		cust->ins.as<Pivot>().SelectionChanged([](const IInspectable&  sender, const RoutedEventArgs&)
-		{
-			auto na = sender.as<Pivot>().Name();
-
-			UWPCONTROL* u = 0;
-			UWPLIB::GetControlByName(na.c_str(), &u);
-			if (!u)
-				return 0;
-
-			SetWindowText(MainWindow, L"Pivot Changed");
-			return 1;
-		});
-
-		// And the HTML click 
 		cust->ins.as<Pivot>().FindName(L"ClickURL").as<HyperlinkButton>().Click([](const IInspectable& sender, const RoutedEventArgs&)
 			{
 				MessageBox(MainWindow, L"URL Clicked", L"", MB_OK);
