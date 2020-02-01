@@ -1,4 +1,5 @@
 
+#define UWPLIB_CUSTOMONLY
 namespace UWPLIB
 {
 	using namespace std;

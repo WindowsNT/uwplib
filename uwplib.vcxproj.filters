@@ -20,14 +20,6 @@
     <ClInclude Include="uwplib.hpp">
       <Filter>Code</Filter>
     </ClInclude>
-    <ClInclude Include="resource.h">
-      <Filter>Code</Filter>
-    </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <ResourceCompile Include="resource.rc">
-      <Filter>Code</Filter>
-    </ResourceCompile>
   </ItemGroup>
   <ItemGroup>
     <Manifest Include="1.manifest">
