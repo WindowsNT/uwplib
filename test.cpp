@@ -37,6 +37,7 @@ LRESULT CALLBACK DP(HWND hh, UINT mm, WPARAM ww, LPARAM ll)
 		RECT rc;
 		GetClientRect(hh, &rc);
 		SetWindowPos(GetDlgItem(hh, 910), 0, 0, 0, rc.right, rc.bottom, SWP_SHOWWINDOW);
+		SendMessage(hh, WM_USER + 1, 0, 0);
 		return 0;
 	}
 	case WM_NOTIFY:
@@ -49,8 +50,15 @@ LRESULT CALLBACK DP(HWND hh, UINT mm, WPARAM ww, LPARAM ll)
 		CreateWindowEx(0, L"UWP_Custom", L"", WS_CHILD | WS_VISIBLE, 0, 0, 0, 0, hh, (HMENU)910, 0, 0);
 		MainWindow = hh;
 		ShowWindow(hh, SW_SHOWMAXIMIZED);
+		SendMessage(hh, WM_USER + 1, 0, 0);
+		return 0;
+	}
+	case WM_USER + 1:
+	{
 		SetWindowText(GetDlgItem(hh, 910), LR"(<Pivot xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Title="UWP Library">
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"  >
+
+
     <PivotItem Header="Basic Input">
 		<StackPanel Orientation="Vertical" Margin="20">
 
@@ -117,7 +125,16 @@ LRESULT CALLBACK DP(HWND hh, UINT mm, WPARAM ww, LPARAM ll)
 				AutomationProperties.Name="editor with custom menu"
 				Width="800" Height="200" 
 				Loaded="REBCustom_Loaded" 
-				Unloaded="REBCustom_Unloaded"/>
+				Unloaded="REBCustom_Unloaded" Margin="0,0,0,10"/>
+
+			<RichTextBlock SelectionHighlightColor="Green" Margin="0,0,0,10">
+				<Paragraph>RichTextBlock provides a rich text display container that supports
+					<Run FontStyle="Italic" FontWeight="Bold">formatted text</Run>,
+					<Hyperlink NavigateUri="https://docs.microsoft.com/uwp/api/Windows.UI.Xaml.Documents.Hyperlink">hyperlinks</Hyperlink>, inline images, and other rich content.</Paragraph>
+				<Paragraph>RichTextBlock also supports a built-in overflow model.</Paragraph>
+			</RichTextBlock>
+
+			<PasswordBox Width="300" Header="Password" PlaceholderText="Enter your password" PasswordChar="#" />
 
 		</StackPanel>
     </PivotItem>
