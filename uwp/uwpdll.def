@@ -1,0 +1,4 @@
+EXPORTS
+
+UWPInit=UWPInit
+CreateUWPMenu=CreateUWPMenu

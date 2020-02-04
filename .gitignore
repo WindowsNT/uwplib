@@ -265,3 +265,5 @@ __pycache__/
 /uwplib.exe.embed.manifest.res
 /uwplib_manifest.rc
 /vc141.idb
+/uwp/test.tlog
+/uwp/uwpdll.tlog

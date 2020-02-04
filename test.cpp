@@ -58,7 +58,6 @@ LRESULT CALLBACK DP(HWND hh, UINT mm, WPARAM ww, LPARAM ll)
 		SetWindowText(GetDlgItem(hh, 910), LR"(<Pivot xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"  >
 
-
     <PivotItem Header="Basic Input">
 		<StackPanel Orientation="Vertical" Margin="20">
 

@@ -1,0 +1,16 @@
+#include <windows.h>
+MENU_1 MENU
+{
+	POPUP "File"
+	{
+		MENUITEM "New",101
+		MENUITEM "Save",102
+		MENUITEM "Load",103
+		MENUITEM SEPARATOR
+		MENUITEM "Exit",199
+	}
+	POPUP "Help"
+	{
+		MENUITEM "About...",104
+	}
+}

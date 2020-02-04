@@ -57,6 +57,10 @@ UWPLIB::UWPCONTROL* u = (UWPLIB::UWPCONTROL*)SendDlgItemMessage(hh, 901, UWPM_GE
 auto pivot = u->ins.as<Pivot>();
 ...
 ```
+
+An example of a DLL that can be called from an ordinary Win32 app is also there in UWP directory. This dll exports a function that can transform a HMENU to an UWP menu and the Win32 can display it.
+
+
 ![TT](https://www.codeproject.com/KB/miscctrl/1279856/1.jpg)
 
 ![Test](https://www.codeproject.com/KB/miscctrl/1279856/2.jpg)
