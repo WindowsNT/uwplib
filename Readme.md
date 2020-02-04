@@ -61,8 +61,14 @@ auto pivot = u->ins.as<Pivot>();
 An example of a DLL that can be called from an ordinary Win32 app is also there in UWP directory. This dll exports a function that can transform a HMENU to an UWP menu and the Win32 can display it.
 
 
-![TT](https://www.codeproject.com/KB/miscctrl/1279856/1.jpg)
-
-![Test](https://www.codeproject.com/KB/miscctrl/1279856/2.jpg)
+![T1](https://www.codeproject.com/KB/miscctrl/1279856/u1-r-700.jpg)
+![T2](https://www.codeproject.com/KB/miscctrl/1279856/u2.jpg)
+![T3](https://www.codeproject.com/KB/miscctrl/1279856/u3.jpg)
+![T4](https://www.codeproject.com/KB/miscctrl/1279856/u4.jpg)
+![T5](https://www.codeproject.com/KB/miscctrl/1279856/u5.jpg)
+![T6](https://www.codeproject.com/KB/miscctrl/1279856/u6.jpg)
+![T7](https://www.codeproject.com/KB/miscctrl/1279856/u7.jpg)
+![T8](https://www.codeproject.com/KB/miscctrl/1279856/u8.jpg)
+![T9](https://www.codeproject.com/KB/miscctrl/1279856/u9.jpg)
 
 
